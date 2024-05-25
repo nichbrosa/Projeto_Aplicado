@@ -19,6 +19,7 @@ class _LoginOuRegistroState extends State<LoginOuRegistro> {
   void togglePaginas(){
     setState((){
       showLoginPagina = !showLoginPagina;
+      
     });
   }
 
