@@ -28,7 +28,7 @@ class RegistroPagina  extends StatefulWidget{
           //logo
           Icon(
             Icons.email_outlined,
-            size: 200,
+            size: 100,
             color: Theme.of(context).colorScheme.inversePrimary,
             ),
           
@@ -37,7 +37,7 @@ class RegistroPagina  extends StatefulWidget{
           //mensagem
             Text("Crie uma conta", 
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 16,
               color: Theme.of(context).colorScheme.inversePrimary,
               )
             ), 

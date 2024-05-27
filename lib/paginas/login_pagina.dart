@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_aplicado/componentes/my_button.dart';
 import 'package:projeto_aplicado/componentes/my_textfield.dart';
+import 'package:projeto_aplicado/paginas/home_pagina.dart';
 
 class LoginPagina extends StatefulWidget{
     final void Function()? onTap;
@@ -24,9 +25,12 @@ class LoginPagina extends StatefulWidget{
     coloque o autenticador aqui
 
     */
-  /*  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePagina(),
+   Navigator.push(
+    context, 
+    MaterialPageRoute(
+      builder: (context) => const HomePagina(),
       ),
-    );*/
+    );
   }
 
   @override

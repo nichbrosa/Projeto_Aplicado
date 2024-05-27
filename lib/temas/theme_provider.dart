@@ -3,11 +3,11 @@ import 'package:projeto_aplicado/temas/modo_claro.dart';
 import 'package:projeto_aplicado/temas/modo_escuro.dart';
 
 class ThemeProvider with ChangeNotifier {
-  ThemeData _themeData = Modoclaro;
+  ThemeData _themeData = ModoClaro;
 
   ThemeData get themeData => _themeData;
 
-  bool get isDarkMode => _themeData == Modoescuro;
+  bool get isDarkMode => _themeData == ModoEscuro;
 
   set themeData(ThemeData themeData){
     _themeData = themeData;
@@ -15,10 +15,10 @@ class ThemeProvider with ChangeNotifier {
   }
 
   void toggleTheme(){
-    if(_themeData == Modoclaro){
-      themeData == Modoescuro;
+    if(_themeData == ModoClaro){
+      themeData = ModoEscuro;
     }else {
-      themeData = Modoclaro;
+      themeData = ModoClaro;
     }
   }
 }
