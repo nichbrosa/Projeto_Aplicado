@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:projeto_aplicado/componentes/my_current_location.dart';
 import 'package:projeto_aplicado/componentes/my_description_box.dart';
 import 'package:projeto_aplicado/componentes/my_drawer.dart';
+import 'package:projeto_aplicado/componentes/my_food_tile.dart';
 import 'package:projeto_aplicado/componentes/my_sliver_app_bar.dart';
 import 'package:projeto_aplicado/componentes/my_tab_bar.dart';
+import 'package:projeto_aplicado/modelos/comida.dart';
+import 'package:projeto_aplicado/modelos/restaurante.dart';
+import 'package:provider/provider.dart';
 
 class HomePagina extends StatefulWidget {
   const HomePagina({super.key});
@@ -22,13 +26,43 @@ class _HomePaginaState extends State<HomePagina> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: CategoriaComida.values.length, vsync: this);
   }
 
 @override
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  // separar e retornar uma lista dos itens de comida que pertencem a uma categoria especifica
+  List<Comida> _filtrarMenuPorCategoria(CategoriaComida categoria, List<Comida> fullMenu){
+    return fullMenu.where((Comida) => Comida.categoria == categoria).toList();
+  }
+
+  // retornar a lista de comidas na categoria fornecida
+  List<Widget> getFoodInThisCategory(List<Comida> fullMenu){
+    return CategoriaComida.values.map((categoria){
+
+      // pega a categoria da comida
+      List<Comida> categoryMenu = _filtrarMenuPorCategoria(categoria, fullMenu);
+    
+    return ListView.builder(
+      itemCount: categoryMenu.length,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.zero,
+      itemBuilder: (context, index) {
+        // pega a comida individualmente
+        final comida = categoryMenu[index];
+
+        //retorna os blocos de UI da comida
+        return FoodTile(
+          comida: comida, 
+          onTap: (){}
+          );
+      },
+      );
+    }).toList();
   }
 
   @override
@@ -57,22 +91,11 @@ class _HomePaginaState extends State<HomePagina> with SingleTickerProviderStateM
               ),
           ),
         ],
-        body: TabBarView(
-            controller: _tabController,
-            children: [
-              ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) => const Text("Home"),
-              ),
-              ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) => const Text("Configurações"),
-              ),
-              ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) => const Text("Usuários"),
-              ),
-            ],
+        body: Consumer<Restaurante>(
+            builder: (context, Restaurante, child) => TabBarView(
+              controller: _tabController,
+              children: getFoodInThisCategory(Restaurante.menu),
+            ),
           ),
         ),
       );
