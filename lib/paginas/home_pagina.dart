@@ -9,6 +9,8 @@ import 'package:projeto_aplicado/componentes/my_sliver_app_bar.dart';
 import 'package:projeto_aplicado/componentes/my_tab_bar.dart';
 import 'package:projeto_aplicado/modelos/comida.dart';
 import 'package:projeto_aplicado/modelos/restaurante.dart';
+import 'package:projeto_aplicado/paginas/comida_pagina.dart';
+import 'package:projeto_aplicado/paginas/login_pagina.dart';
 import 'package:provider/provider.dart';
 
 class HomePagina extends StatefulWidget {
@@ -58,7 +60,12 @@ class _HomePaginaState extends State<HomePagina> with SingleTickerProviderStateM
         //retorna os blocos de UI da comida
         return FoodTile(
           comida: comida, 
-          onTap: (){}
+          onTap: () => Navigator.push(
+            context, 
+            MaterialPageRoute(
+              builder: (context) => ComidaPagina(comida: comida),
+              ),
+            ),
           );
       },
       );

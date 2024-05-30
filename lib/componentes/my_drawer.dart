@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:projeto_aplicado/componentes/my_drawer_tile.dart';
 import 'package:projeto_aplicado/paginas/config_pagina.dart';
+import 'package:projeto_aplicado/paginas/login_pagina.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -55,7 +56,12 @@ class MyDrawer extends StatelessWidget {
           MyDrawerTile(
             text: "D E S L O G A R",
             icon: Icons.logout_outlined,
-            onTap: (){}
+            onTap: () => Navigator.push(
+            context, 
+            MaterialPageRoute(
+              builder: (context) => LoginPagina(onTap: () {},),
+              ),
+            ),
             ),
 
             const SizedBox(height: 25),

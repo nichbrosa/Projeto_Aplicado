@@ -6,7 +6,7 @@ class Comida {
     final String caminhoImagem;                   //lib/imagens/x-salada.png
     final double preco;                           //20,00
     final CategoriaComida categoria;              //hamburguer
-    List<Complemento> complementosDisponiveis;    //[queijo extra, bacon, mais hamburguer]
+    List<Complemento> complementosDisponiveis;    //queijo extra, bacon, mais hamburguer]
 
     Comida({
       required this.nome,
@@ -22,7 +22,7 @@ class Comida {
     enum CategoriaComida{
       hamburguers,
       saladas,
-      acompanhamentos,
+      petiscos,
       sobremesas,
       bebidas,
     }

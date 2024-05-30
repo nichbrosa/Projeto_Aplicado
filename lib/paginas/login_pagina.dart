@@ -51,11 +51,16 @@ class LoginPagina extends StatefulWidget{
 
           const SizedBox(height: 10),
           //mensagem
-            Text("Die Menüs", 
-            style: TextStyle(
-              fontSize: 32,
-              color: Theme.of(context).colorScheme.inversePrimary,
-              )
+        
+            Column(
+              children: [
+                Text("Die Menüs", 
+                style: TextStyle(
+                  fontSize: 32,
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                  )
+                ),
+              ],
             ), 
 
           const SizedBox(height: 25),

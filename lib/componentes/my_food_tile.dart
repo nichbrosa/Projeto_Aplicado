@@ -29,7 +29,7 @@ class FoodTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(comida.nome),
-                      Text('R\$' + comida.preco.toString(), 
+                      Text('R\$' + comida.preco.toStringAsFixed(2), 
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.primary
                         ),
