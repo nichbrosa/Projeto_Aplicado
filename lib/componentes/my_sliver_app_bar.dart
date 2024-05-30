@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_aplicado/paginas/carrinho_pagina.dart';
 
 class MySliverAppBar extends StatelessWidget {
   final Widget child;
@@ -19,14 +20,22 @@ class MySliverAppBar extends StatelessWidget {
       pinned: true,
       actions: [
         //botão carrinho
-        IconButton(onPressed: () {},
+        IconButton(onPressed: () {
+          //ir para a pagina carrinho
+          Navigator.push(
+            context, 
+              MaterialPageRoute(
+                builder: (context) => const CarrinhoPagina(), 
+            ),
+          );
+        },
         icon: const Icon(Icons.shopping_cart_outlined),
         )
       ],
       backgroundColor: Theme.of(context).colorScheme.background,
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       
-      title: Text("Die Menüs"),
+      title: const Text("Die Menüs"),
       centerTitle: true,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_aplicado/componentes/my_button.dart';
 import 'package:projeto_aplicado/modelos/comida.dart';
+import 'package:projeto_aplicado/modelos/restaurante.dart';
+import 'package:provider/provider.dart';
 
 class ComidaPagina extends StatefulWidget {
   final Comida comida;
@@ -21,9 +23,31 @@ class ComidaPagina extends StatefulWidget {
 }
 
 class _ComidaPaginaState extends State<ComidaPagina> {
+
+  //metodo adicionar ao carrinho
+  void adicionarAoCarrinho(Comida comida, Map<Complemento, bool> complementoSelecionado){
+
+    //fechar a pagina atual e voltar ao menu
+    Navigator.pop(context);
+
+    //formatar os complementos selecionados
+    List<Complemento> complementoSelecionadoAtual = [];
+    for(Complemento complemento in widget.comida.complementosDisponiveis){
+      if(complementoSelecionado[complemento] == true){
+        complementoSelecionadoAtual.add(complemento);
+     }
+   }
+    
+   //adicionar ao carrinho
+   context.read<Restaurante>().adicionarAoCarrinho(comida, complementoSelecionadoAtual);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Stack(
+      children: [
+        //scaffold UI
+        Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -113,14 +137,33 @@ class _ComidaPaginaState extends State<ComidaPagina> {
         
             //botao -> adicionar ao carrinho
             MyButton(
-              onTap: (){}, 
+              onTap: () =>  adicionarAoCarrinho(widget.comida, widget.ComplementoSelecionado), 
               text: "Adicionar ao carrinho"
             ),
 
-            const SizedBox(height: 25),
-          ],
+              const SizedBox(height: 25),
+              ],
+            ),
+          ),
         ),
-      ),
+        //botão de retorno
+        SafeArea(
+          child: Opacity(
+            opacity: 0.5,
+            child: Container(
+              margin: const EdgeInsets.only(left: 25),
+              decoration: 
+                BoxDecoration(color: Theme.of(context).colorScheme.secondary,
+                  shape: BoxShape.circle,
+                ),
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back_ios_new_outlined),
+                onPressed: () => Navigator.pop(context),
+                ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

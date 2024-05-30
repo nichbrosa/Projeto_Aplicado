@@ -1,4 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_aplicado/modelos/item_carrinho.dart';
 
 import 'comida.dart';
 
@@ -119,6 +121,7 @@ class Restaurante extends ChangeNotifier{
   */
 
   List<Comida> get menu => _menu;
+  List<ItemCarrinho> get carrinho => _carrinho;
 
   /*
 
@@ -126,16 +129,88 @@ class Restaurante extends ChangeNotifier{
 
   */
 
+  //carrinho
+  List<ItemCarrinho> _carrinho = [];
+
   // adicionar ao carrinho
+  void adicionarAoCarrinho(Comida comida, List<Complemento> complementoSelecionado){
+    //verificar se ja tem alguma comida no carrinho selecionado
+    ItemCarrinho? itemCarrinho = _carrinho.firstWhereOrNull((item){
+      //checar se os itens comidas são a mesma
+      bool eComidaigual = item.comida == comida;
+
+      //checar se a lista de complementos selecionados são os mesmos
+      bool eComplementoigual =
+          ListEquality().equals(item.complementoSelecionado, complementoSelecionado);
+
+        return eComidaigual && eComplementoigual;
+    });
+
+    //se tiver, aumentar a quantidade
+    if(itemCarrinho != null){
+      itemCarrinho.quantidade++;
+    }
+
+    //senao, adicionar o item ao carrinho
+    else{
+      _carrinho.add(
+        ItemCarrinho(
+          comida: comida, 
+          complementoSelecionado: complementoSelecionado,
+          ),
+      );
+    }
+    notifyListeners();
+  }
 
   // remover do carrinho
+  void removerDoCarrinho(ItemCarrinho itemCarrinho){
+    int indexCarrinho = _carrinho.indexOf(itemCarrinho);
+
+    if(indexCarrinho != -1){
+      if(_carrinho[indexCarrinho].quantidade > 1){
+        _carrinho[indexCarrinho].quantidade--;
+      }else{
+        _carrinho.removeAt(indexCarrinho);
+      }
+    }
+    notifyListeners();
+  }
 
   // preço total do carrinho
+  double getPrecoTotal(){
+    double total = 0.0;
 
+    for(ItemCarrinho itemCarrinho in _carrinho){
+      double itemTotal = itemCarrinho.comida.preco;
+
+      for(Complemento complemento in itemCarrinho.complementoSelecionado){
+        itemTotal += complemento.preco;
+      }
+
+      total += itemTotal * itemCarrinho.quantidade;
+    }
+
+    return total;
+  }
 
   // numero total de itens no carrinho
+  int getContagemItensTotal(){
+    int contagemItensTotal = 0;
+
+    for (ItemCarrinho itemCarrinho in _carrinho){
+      contagemItensTotal += itemCarrinho.quantidade;
+    }
+
+    return contagemItensTotal;
+  }
 
   // limpar carrinho
+  void limparCarrinho(){
+    _carrinho.clear();
+    notifyListeners();
+  }
+
   /*
 
   HELPERS
