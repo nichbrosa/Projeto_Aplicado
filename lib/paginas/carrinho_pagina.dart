@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:projeto_aplicado/componentes/my_button.dart';
+import 'package:projeto_aplicado/componentes/my_cart_tile.dart';
 import 'package:projeto_aplicado/modelos/restaurante.dart';
 import 'package:provider/provider.dart';
 
@@ -18,19 +21,75 @@ class CarrinhoPagina extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           foregroundColor: Theme.of(context).colorScheme.inversePrimary,
+          actions: [
+            //botao limpar carrinho
+            IconButton(
+              onPressed: (){
+                showDialog(
+                  context: context, 
+                  builder: (context) => AlertDialog(
+                    title: const Text("Você gostaria de limpar o carrinho?"),
+                    actions: [
+                      //botao cancelar
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: const Text("Cancelar"),
+                      ),
+                      //botao confirmar
+                     TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          restaurante.limparCarrinho();
+                        },
+                        child: const Text("Sim"),
+                      ), 
+                    ],
+                  ),
+                );
+              }, 
+              icon: const Icon(Icons.delete_outlined),
+            ),
+          ],
         ),
         body: Column(
           children: [
+
+            //lista do carrinho
             Expanded(
-              child: ListView.builder(
-                itemCount: usuarioCarrinho.length,
-                itemBuilder: (context, index) => ListTile(
-                  title: Text(usuarioCarrinho[index].comida.nome),
-                  ),
+              child: Column(
+                children: [
+                  usuarioCarrinho.isEmpty 
+                  ?const Expanded(
+                    child: Center(
+                      child: Text("Carrinho está vazio.."),
+                    ),
+                  ) 
+                  : Expanded(
+                    child: ListView.builder(
+                      itemCount: usuarioCarrinho.length,
+                      itemBuilder: (context, index){
+              
+                        //get item individual do carrinho
+                        final itemCarrinho = usuarioCarrinho[index];
+              
+                        //retorna a UI do tile carrinho
+                        return MyCartTile(itemCarrinho: itemCarrinho,);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
+            ),
+
+              //botao para pagar
+              MyButton(
+                text: "Pagar", 
+                onTap: (){}
+                ),
+
+                const SizedBox(height: 25),
+          ],
+        ),
       );
     },);
   }
