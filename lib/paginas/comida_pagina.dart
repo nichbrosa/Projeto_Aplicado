@@ -70,7 +70,7 @@ class _ComidaPaginaState extends State<ComidaPagina> {
         
                   //preco comida
                   Text(
-                    'R\$' + widget.comida.preco.toStringAsFixed(2),
+                    "R\$" + widget.comida.preco.toStringAsFixed(2),
                     style: TextStyle(fontWeight: FontWeight.bold,
                     fontSize: 16,
                     color: Theme.of(context).colorScheme.primary,

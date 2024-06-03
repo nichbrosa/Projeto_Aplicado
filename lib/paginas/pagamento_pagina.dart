@@ -47,12 +47,15 @@ class _PagamentoPaginaState extends State<PagamentoPagina> {
             
             //botao confirmar
             TextButton(
-              onPressed: () => Navigator.push(
-                context, 
-                MaterialPageRoute(
-                  builder: (context) => const ProgressoEntregaPagina(),
-                ),
-              ),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) => const ProgressoEntregaPagina(),
+                  ),
+                );
+              },
               child: const Text("Sim"),
             ),
             

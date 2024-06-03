@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:projeto_aplicado/modelos/item_carrinho.dart';
 
 import 'comida.dart';
@@ -218,9 +219,45 @@ class Restaurante extends ChangeNotifier{
   */
 
   // gerar recibo
+  String mostrarReciboCarrinho(){
+    final recibo = StringBuffer();
+    recibo.writeln("Aqui está o seu recibo.");
+    recibo.writeln();
 
+    //formatar data para mostrar até segundos
+    String formatarData = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+
+    recibo.writeln(formatarData);
+    recibo.writeln();
+    recibo.writeln("------------");
+
+    for(final itemCarrinho in _carrinho){
+      recibo.writeln(
+        "${itemCarrinho.quantidade} x ${itemCarrinho.comida.nome} - ${_formatarPreco(itemCarrinho.comida.preco)}");
+      if(itemCarrinho.complementoSelecionado.isNotEmpty){
+        recibo.writeln(
+          " Complementos: ${_formatarComplemento(itemCarrinho.complementoSelecionado)}"
+        );
+      }
+      recibo.writeln();
+    }
+
+    recibo.writeln("--------------");
+    recibo.writeln();
+    recibo.writeln("Total de itens: ${getContagemItensTotal()}");
+    recibo.writeln("Total do preço: ${_formatarPreco(getPrecoTotal())}");
+
+    return recibo.toString();
+  }
+  
   // formatar double valor em dinheiro
+  String _formatarPreco(double preco){
+    return "R\$${preco.toStringAsFixed(2)}";
+  }
 
   // formatar lista de addons em uma string summary
-
+  String _formatarComplemento(List<Complemento> complemento){
+    return complemento.map((complemento) => "${complemento.nome} (${_formatarPreco(complemento.preco)})")
+    .join(", ");
+  }
 }
