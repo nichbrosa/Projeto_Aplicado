@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:projeto_aplicado/componentes/my_button.dart';
 import 'package:projeto_aplicado/componentes/my_cart_tile.dart';
 import 'package:projeto_aplicado/modelos/restaurante.dart';
+import 'package:projeto_aplicado/paginas/pagamento_pagina.dart';
 import 'package:provider/provider.dart';
 
 class CarrinhoPagina extends StatelessWidget {
@@ -83,9 +84,14 @@ class CarrinhoPagina extends StatelessWidget {
 
               //botao para pagar
               MyButton(
-                text: "Pagar", 
-                onTap: (){}
+                onTap: () => Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context) => const PagamentoPagina(),
+                  ),
                 ),
+                text: " Ir para pagamento", 
+              ),
 
                 const SizedBox(height: 25),
           ],
