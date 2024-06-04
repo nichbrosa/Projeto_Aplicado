@@ -115,6 +115,12 @@ class Restaurante extends ChangeNotifier{
       ),
   ];
 
+  //carrinho
+  final List<ItemCarrinho> _carrinho = [];
+
+  //endereço de entrega (alteravel pelo usuário)
+  String _deliveryAdress = 'Rua São Paulo, 1147 - Victor Konder';
+
   /*
 
   GETTERS
@@ -123,6 +129,7 @@ class Restaurante extends ChangeNotifier{
 
   List<Comida> get menu => _menu;
   List<ItemCarrinho> get carrinho => _carrinho;
+  String get deliveryAdress => _deliveryAdress;
 
   /*
 
@@ -130,8 +137,7 @@ class Restaurante extends ChangeNotifier{
 
   */
 
-  //carrinho
-  List<ItemCarrinho> _carrinho = [];
+
 
   // adicionar ao carrinho
   void adicionarAoCarrinho(Comida comida, List<Complemento> complementoSelecionado){
@@ -212,6 +218,12 @@ class Restaurante extends ChangeNotifier{
     notifyListeners();
   }
 
+  //atualizar o endereço de entrega
+  void updateDeliveryAdress(String newAddress){
+    _deliveryAdress = newAddress;
+    notifyListeners();
+  }
+
   /*
 
   HELPERS
@@ -246,6 +258,8 @@ class Restaurante extends ChangeNotifier{
     recibo.writeln();
     recibo.writeln("Total de itens: ${getContagemItensTotal()}");
     recibo.writeln("Total do preço: ${_formatarPreco(getPrecoTotal())}");
+    recibo.writeln();
+    recibo.writeln("Entregando para: $deliveryAdress");
 
     return recibo.toString();
   }

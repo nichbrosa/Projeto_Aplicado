@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:projeto_aplicado/componentes/my_drawer_tile.dart';
 import 'package:projeto_aplicado/paginas/config_pagina.dart';
-import 'package:projeto_aplicado/paginas/login_pagina.dart';
+import 'package:projeto_aplicado/servicos/auth/auth_service.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
+
+  void logout(){
+    final _authService = AuthService();
+    _authService.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +53,16 @@ class MyDrawer extends StatelessWidget {
               },
             ),
 
-          Spacer(),
+          const Spacer(),
 
           //logout list title
           MyDrawerTile(
             text: "D E S L O G A R",
             icon: Icons.logout_outlined,
-            onTap: () => Navigator.push(
-            context, 
-            MaterialPageRoute(
-              builder: (context) => LoginPagina(onTap: () {},),
-              ),
-            ),
+            onTap: () {
+              logout();
+              Navigator.pop(context);
+              },
             ),
 
             const SizedBox(height: 25),

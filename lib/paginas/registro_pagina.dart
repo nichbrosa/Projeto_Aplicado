@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:projeto_aplicado/componentes/my_button.dart';
 import 'package:projeto_aplicado/componentes/my_textfield.dart';
+import 'package:projeto_aplicado/servicos/auth/auth_service.dart';
 
 class RegistroPagina  extends StatefulWidget{
   final void Function()? onTap;
@@ -16,6 +19,44 @@ class RegistroPagina  extends StatefulWidget{
   final TextEditingController emailController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
   final TextEditingController confirmarsenhaController = TextEditingController();
+
+  //metodo registrar
+  void registrar() async{
+    //get auth service
+    final _authService = AuthService();
+
+    //checa se as senhas batem -> criar usuario
+    if (senhaController.text == confirmarsenhaController.text){
+      //tentar criar usuario
+      try{
+        await _authService.signUpWithEmailPassword(
+          emailController.text, 
+          senhaController.text
+        );
+      }
+
+      //mostrar qualquer error
+      catch(e){
+        showDialog(
+          context: context, 
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()
+            ),
+          ),
+        );
+      }
+    }
+    
+    //se as senhas não forem iguais -> mostrar error
+    else{
+      showDialog(
+          context: context, 
+          builder: (context) => const AlertDialog(
+            title: Text("Senhas não são iguais!"),
+          ),
+        );
+    }
+  }
 
   @override
   Widget build(BuildContext context){
@@ -73,8 +114,10 @@ class RegistroPagina  extends StatefulWidget{
           //botão registrar
           MyButton(
             text: "Registrar",
-            onTap: (){},
-            ),
+            onTap: (){
+              registrar();
+            },
+          ),
 
          const SizedBox(height: 25),
 

@@ -1,7 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:projeto_aplicado/componentes/my_button.dart';
 import 'package:projeto_aplicado/componentes/my_textfield.dart';
-import 'package:projeto_aplicado/paginas/home_pagina.dart';
+import 'package:projeto_aplicado/servicos/auth/auth_service.dart';
 
 class LoginPagina extends StatefulWidget{
     final void Function()? onTap;
@@ -19,18 +21,28 @@ class LoginPagina extends StatefulWidget{
   final TextEditingController senhaController = TextEditingController();
 
   //metodo login
-  void login(){
-    /*
+  void login() async{
+    //get instancia do auth service
+    final _authService = AuthService();
 
-    coloque o autenticador aqui
+    //tentar sign in
+    try{
+      await _authService.signInWithEmailPassword(
+        emailController.text, 
+        senhaController.text
+      );
+    }
 
-    */
-   Navigator.push(
-    context, 
-    MaterialPageRoute(
-      builder: (context) => const HomePagina(),
-      ),
-    );
+    //mostrar mensagem de erro
+    catch(e){
+      showDialog(
+          context: context, 
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()
+            ),
+          ),
+        );
+    }
   }
 
   @override

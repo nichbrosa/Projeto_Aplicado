@@ -13,7 +13,7 @@ class MyReceipt extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          const Text("Obrigado pelo seu pedido"),
+          const Text("Obrigado pelo seu pedido!"),
           const SizedBox(height: 25),
           Container(
             decoration: BoxDecoration(

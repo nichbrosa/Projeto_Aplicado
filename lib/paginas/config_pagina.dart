@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_aplicado/temas/modo_gluten.dart';
 import 'package:projeto_aplicado/temas/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -44,8 +45,10 @@ class ConfigPagina extends StatelessWidget{
                     .toggleTheme(),
                 ),
               ],
+              
             ),
-          ),
+            
+          ),                  
         ],
       ),
     );

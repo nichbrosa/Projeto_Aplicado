@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:projeto_aplicado/componentes/my_quantity_selector.dart';
-import 'package:projeto_aplicado/modelos/comida.dart';
 import 'package:projeto_aplicado/modelos/item_carrinho.dart';
 import 'package:projeto_aplicado/modelos/restaurante.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +24,7 @@ class MyCartTile extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -55,22 +54,28 @@ class MyCartTile extends StatelessWidget {
                    style: TextStyle(
                      color: Theme.of(context).colorScheme.primary),
                   ),
+
+                  const SizedBox(height: 10),
+
+                   //aumentar e diminuir quantidade
+                   QuantitySelector(
+                     quantidade: itemCarrinho.quantidade, 
+                     comida: itemCarrinho.comida, 
+                       onAumentar: (){
+                        restaurante.adicionarAoCarrinho(itemCarrinho.comida, itemCarrinho.complementoSelecionado);
+                  }, 
+                   onDiminuir: (){
+                    restaurante.removerDoCarrinho(itemCarrinho);
+                  }, 
+                ),
+
+
                 ],
               ),
 
               const Spacer(),
               
-              //aumentar e diminuir quantidade
-                QuantitySelector(
-                  quantidade: itemCarrinho.quantidade, 
-                  comida: itemCarrinho.comida, 
-                  onAumentar: (){
-                    restaurante.adicionarAoCarrinho(itemCarrinho.comida, itemCarrinho.complementoSelecionado);
-                  }, 
-                  onDiminuir: (){
-                    restaurante.removerDoCarrinho(itemCarrinho);
-                  }, 
-                ),
+             
                          ],
                         ),
             ),

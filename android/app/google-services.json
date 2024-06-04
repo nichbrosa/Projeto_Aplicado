@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "910277914750",
+    "project_id": "die-menus-6897c",
+    "storage_bucket": "die-menus-6897c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910277914750:android:7bab247f7c13fd60ee282f",
+        "android_client_info": {
+          "package_name": "com.example.projeto_aplicado"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeyOCrSpH4Y7mWBeut5sG-GnAql8BdQBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

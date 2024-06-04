@@ -10,7 +10,6 @@ import 'package:projeto_aplicado/componentes/my_tab_bar.dart';
 import 'package:projeto_aplicado/modelos/comida.dart';
 import 'package:projeto_aplicado/modelos/restaurante.dart';
 import 'package:projeto_aplicado/paginas/comida_pagina.dart';
-import 'package:projeto_aplicado/paginas/login_pagina.dart';
 import 'package:provider/provider.dart';
 
 class HomePagina extends StatefulWidget {
@@ -75,7 +74,7 @@ class _HomePaginaState extends State<HomePagina> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScroller) => [
           MySliverAppBar(
@@ -90,7 +89,7 @@ class _HomePaginaState extends State<HomePagina> with SingleTickerProviderStateM
                   ),
 
                 //localização atual
-                const MyCurrentLocation(),
+                MyCurrentLocation(),
 
                 //caixa de descrição
                 const MyDescriptionBox(),
@@ -99,9 +98,9 @@ class _HomePaginaState extends State<HomePagina> with SingleTickerProviderStateM
           ),
         ],
         body: Consumer<Restaurante>(
-            builder: (context, Restaurante, child) => TabBarView(
+            builder: (context, restaurante, child) => TabBarView(
               controller: _tabController,
-              children: getFoodInThisCategory(Restaurante.menu),
+              children: getFoodInThisCategory(restaurante.menu),
             ),
           ),
         ),

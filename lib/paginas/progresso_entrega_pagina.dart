@@ -1,21 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_aplicado/componentes/my_receipt.dart';
+import 'package:projeto_aplicado/modelos/restaurante.dart';
+import 'package:projeto_aplicado/servicos/database/firestore.dart';
+import 'package:provider/provider.dart';
 
-class ProgressoEntregaPagina extends StatelessWidget {
+class ProgressoEntregaPagina extends StatefulWidget {
   const ProgressoEntregaPagina({super.key});
+
+  @override
+  State<ProgressoEntregaPagina> createState() => _ProgressoEntregaPaginaState();
+}
+
+class _ProgressoEntregaPaginaState extends State<ProgressoEntregaPagina> {
+
+  //acesso ao banco
+  FirestoreService banco = FirestoreService();
+
+  @override
+  void initState(){
+    super.initState();
+
+    //se chegarmos a essa pagina, enviamos o pedido ao banco de dados firestore
+    String recibo = context.read<Restaurante>().mostrarReciboCarrinho();
+    banco.salvarPedidosNoBanco(recibo);
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text("Entrega em progresso ..."),
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
-      body: const Column(
-        children: [
-          MyReceipt()
-        ],
+      body: const SingleChildScrollView(
+        child:  Column(
+          children: [
+            MyReceipt()
+          ],
+        ),
       ),
     );
   }
