@@ -29,7 +29,9 @@ class Comida {
       petiscos,
       sobremesas,
       bebidas,
+      spagheti,
     }
+    
 
     //Addons comida
     class Complemento{

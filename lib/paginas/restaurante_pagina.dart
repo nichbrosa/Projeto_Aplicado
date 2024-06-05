@@ -16,10 +16,10 @@ class RestaurantePagina extends StatefulWidget {
   const RestaurantePagina({super.key});
 
   @override
-  State<RestaurantePagina> createState() => _Restaurante2PaginaState();
+  State<RestaurantePagina> createState() => _RestaurantePaginaState();
 }
 
-class _Restaurante2PaginaState extends State<RestaurantePagina> with SingleTickerProviderStateMixin{
+class _RestaurantePaginaState extends State<RestaurantePagina> with SingleTickerProviderStateMixin{
    
   //tab controller
   late TabController _tabController;
@@ -89,6 +89,9 @@ class _Restaurante2PaginaState extends State<RestaurantePagina> with SingleTicke
                   color: Theme.of(context).colorScheme.secondary,
                   ),
 
+                //nome do restaurante
+                const Text("Just Burgers"),
+                
                 //localização atual
                 MyCurrentLocation(),
 

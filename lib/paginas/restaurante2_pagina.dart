@@ -89,6 +89,8 @@ class _HomePaginaState extends State<Restaurante2Pagina> with SingleTickerProvid
                   color: Theme.of(context).colorScheme.secondary,
                   ),
 
+                //nome do restaurante
+                const Text("Best"),
                 //localização atual
                 MyCurrentLocation(),
 

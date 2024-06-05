@@ -114,6 +114,20 @@ class Restaurante2 extends ChangeNotifier{
         Complemento(nome: "Copo congelado", preco: 2.99),
         ],
       ),
+
+       //spagheti
+    Comida(
+      nome: "Macarrao", 
+      descricao: 'Lata de coca-cola 350ML', 
+      caminhoImagem: "lib/imagens/comidas/MACARRAO.png", 
+      preco: 8.90, 
+      gluten: false,
+      leite: false, 
+      categoria: CategoriaComida.spagheti, 
+      complementosDisponiveis: [
+        Complemento(nome: "Copo congelado", preco: 2.99),
+        ],
+      ),
   ];
 
   //carrinho

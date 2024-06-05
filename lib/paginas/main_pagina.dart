@@ -50,7 +50,7 @@ class _MainPaginaState extends State<MainPagina> {
                       builder: (context) => const RestaurantePagina(),
                     ),
                   ),
-                  text: 'Restaurante 1',
+                  text: 'Just Burgers',
                 ),
                 const SizedBox(height: 20),
                 Divider(
@@ -67,7 +67,7 @@ class _MainPaginaState extends State<MainPagina> {
                       builder: (context) => const Restaurante2Pagina(),
                     ),
                   ),
-                  text: 'Restaurante 2',
+                  text: "Burger",
                 ),
                 const SizedBox(height: 100),
               ],
