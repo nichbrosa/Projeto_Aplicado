@@ -5,7 +5,9 @@ class Comida {
     final String descricao;                       //pão, salada, carne e queijo
     final String caminhoImagem;                   //lib/imagens/x-salada.png
     final double preco;                           //20,00
-    final CategoriaComida categoria;              //hamburguer
+    final CategoriaComida categoria; 
+    bool gluten = true;
+    bool leite = true;            //hamburguer
     List<Complemento> complementosDisponiveis;    //queijo extra, bacon, mais hamburguer]
 
     Comida({
@@ -15,6 +17,8 @@ class Comida {
       required this.preco,
       required this.categoria,
       required this.complementosDisponiveis,
+      required this.gluten,
+      required this.leite,
     });
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_aplicado/componentes/my_drawer_tile.dart';
 import 'package:projeto_aplicado/paginas/config_pagina.dart';
+import 'package:projeto_aplicado/paginas/main_pagina.dart';
 import 'package:projeto_aplicado/servicos/auth/auth_service.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -38,7 +39,12 @@ class MyDrawer extends StatelessWidget {
           MyDrawerTile(
             text: "H O M E",
             icon: Icons.home_outlined,
-            onTap: () => Navigator.pop(context),
+            onTap: (){ 
+              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const MainPagina(),
+                  ),
+                );
+              },
             ),
 
           //settings list title

@@ -8,18 +8,18 @@ import 'package:projeto_aplicado/componentes/my_food_tile.dart';
 import 'package:projeto_aplicado/componentes/my_sliver_app_bar.dart';
 import 'package:projeto_aplicado/componentes/my_tab_bar.dart';
 import 'package:projeto_aplicado/modelos/comida.dart';
-import 'package:projeto_aplicado/modelos/restaurante.dart';
+import 'package:projeto_aplicado/modelos/restaurante2.dart';
 import 'package:projeto_aplicado/paginas/comida_pagina.dart';
 import 'package:provider/provider.dart';
 
-class HomePagina extends StatefulWidget {
-  const HomePagina({super.key});
+class Restaurante2Pagina extends StatefulWidget {
+  const Restaurante2Pagina({super.key});
 
   @override
-  State<HomePagina> createState() => _HomePaginaState();
+  State<Restaurante2Pagina> createState() => _HomePaginaState();
 }
 
-class _HomePaginaState extends State<HomePagina> with SingleTickerProviderStateMixin{
+class _HomePaginaState extends State<Restaurante2Pagina> with SingleTickerProviderStateMixin{
    
   //tab controller
   late TabController _tabController;
@@ -79,6 +79,7 @@ class _HomePaginaState extends State<HomePagina> with SingleTickerProviderStateM
         headerSliverBuilder: (context, innerBoxIsScroller) => [
           MySliverAppBar(
             title: MyTabBar(tabController: _tabController),
+            isScroller: true,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [              
@@ -97,10 +98,10 @@ class _HomePaginaState extends State<HomePagina> with SingleTickerProviderStateM
               ),
           ),
         ],
-        body: Consumer<Restaurante>(
-            builder: (context, restaurante, child) => TabBarView(
+        body: Consumer<Restaurante2>(
+            builder: (context, restaurante2, child) => TabBarView(
               controller: _tabController,
-              children: getFoodInThisCategory(restaurante.menu),
+              children: getFoodInThisCategory(restaurante2.menu),
             ),
           ),
         ),

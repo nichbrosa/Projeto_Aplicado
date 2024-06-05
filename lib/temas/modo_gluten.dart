@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Gluten with ChangeNotifier{
-
+class Gluten with ChangeNotifier {
   bool _glutenIsVisible = true;
 
-   bool get glutenIsVisible => _glutenIsVisible;
+  bool get glutenIsVisible => _glutenIsVisible;
 
-    void togglegluten(){
-      _glutenIsVisible = !_glutenIsVisible;
-      notifyListeners();
+  void toggleGluten() {
+    _glutenIsVisible = !_glutenIsVisible;
+    notifyListeners();
   }
 }

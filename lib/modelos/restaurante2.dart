@@ -5,25 +5,10 @@ import 'package:projeto_aplicado/modelos/item_carrinho.dart';
 
 import 'comida.dart';
 
-class Restaurante extends ChangeNotifier{
+class Restaurante2 extends ChangeNotifier{
   // lista de comidas no menu
   final List<Comida> _menu = [
     //hamburgueres
-    Comida(
-      nome: "Hamburguer simples", 
-      descricao: 'Pão, queijo chedar e carne bovina', 
-      caminhoImagem: "lib/imagens/comidas/HAMBURGUE_SIMPLES2.png", 
-      preco: 20.00, 
-      categoria: CategoriaComida.hamburguers,
-      gluten: true,
-      leite: true, 
-      complementosDisponiveis: [
-        Complemento(nome: "Queijo extra", preco: 1.99),
-        Complemento(nome: "Carne extra", preco: 4.99),
-        Complemento(nome: "Bacon", preco: 2.99),
-        ],
-      ),
-
     Comida(
       nome: "Duplo hamburguer", 
       descricao: '2 hamburgueres de pão, queijo chedar e carne bovina', 
