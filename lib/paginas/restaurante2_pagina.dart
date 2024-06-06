@@ -88,7 +88,7 @@ class _Restaurante2PaginaState extends State<Restaurante2Pagina> with SingleTick
 
                 //nome do restaurante
                 const Text(
-                    "Best",
+                    "LaMasa",
                       style: TextStyle(
                         fontSize: 16, // Tamanho da fonte
                         fontWeight: FontWeight.bold, // Negrito

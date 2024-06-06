@@ -39,18 +39,16 @@ class _MainPaginaState extends State<MainPagina> {
                   size: 150,
                   color: Theme.of(context).colorScheme.inversePrimary,
                 ),
-
                 const SizedBox(height: 20),
-
                 _buildCard(
-                  imageUrl: 'lib/imagens/comidas/MINI_PASTEL.png',
+                  imageUrl: 'lib/imagens/comidas/HAHO.jpg',
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const RestaurantePagina(),
                     ),
                   ),
-                  text: 'Just Burgers',
+                  text: 'DogBurguer',
                 ),
                 const SizedBox(height: 20),
                 Divider(
@@ -60,14 +58,14 @@ class _MainPaginaState extends State<MainPagina> {
                 ),
                 const SizedBox(height: 20),
                 _buildCard(
-                  imageUrl: 'lib/imagens/comidas/BURGÃO.png',
+                  imageUrl: 'lib/imagens/comidas/ITA.jpg',
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const Restaurante2Pagina(),
                     ),
                   ),
-                  text: "Burger",
+                  text: "LaMasa",
                 ),
                 const SizedBox(height: 100),
               ],
@@ -106,8 +104,8 @@ class _MainPaginaState extends State<MainPagina> {
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
                   imageUrl,
-                  width: 100,
-                  height: 100,
+                  width: 80, // Ajuste a largura da imagem
+                  height: 80, // Ajuste a altura da imagem
                   fit: BoxFit.cover,
                 ),
               ),
@@ -116,8 +114,8 @@ class _MainPaginaState extends State<MainPagina> {
                 child: Text(
                   text,
                   style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 18, // Tamanho da fonte maior
+                    fontWeight: FontWeight.bold, // Negrito
                   ),
                   textAlign: TextAlign.center,
                 ),

@@ -27,7 +27,7 @@ class Comida {
 //Categoria da comida Restaurante 1
 enum CategoriaComida {
   hamburguers,
-  saladas,
+  hotdog,
   petiscos,
   sobremesas,
   bebidas,
@@ -36,8 +36,8 @@ enum CategoriaComida {
 //Categoria da comida Restaurante 2
 enum CategoriaComida2 {
   spagheti,
-  saladas,
-  petiscos,
+  lasanha,
+  pizza,
   sobremesas,
   bebidas,
 }

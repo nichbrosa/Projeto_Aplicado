@@ -49,7 +49,7 @@ class MySliverAppBar extends StatelessWidget {
         )
       ],
       bottom: PreferredSize(
-        preferredSize: const Size(0),
+        preferredSize: const Size.fromHeight(0),
         child: Divider(
           indent: 25,
           endIndent: 25,

@@ -90,7 +90,7 @@ class _RestaurantePaginaState extends State<RestaurantePagina>
 
                 //nome do restaurante
                 const Text(
-                    "Just Burgers",
+                    "DogBurguer",
                       style: TextStyle(
                         fontSize: 16, // Tamanho da fonte
                         fontWeight: FontWeight.bold, // Negrito
