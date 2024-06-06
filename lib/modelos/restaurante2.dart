@@ -8,98 +8,6 @@ import 'comida.dart';
 class Restaurante2 extends ChangeNotifier{
   // lista de comidas no menu
   final List<Comida> _menu = [
-    //hamburgueres
-    Comida(
-      nome: "Duplo hamburguer", 
-      descricao: '2 hamburgueres de pão, queijo chedar e carne bovina', 
-      caminhoImagem: "lib/imagens/comidas/DOUBLE_BURGUER.jpg", 
-      preco: 35.00,
-      gluten: true,
-      leite: true,        
-      categoria: CategoriaComida.hamburguers, 
-      complementosDisponiveis: [
-        Complemento(nome: "Queijo extra", preco: 1.99),
-        Complemento(nome: "Carne extra", preco: 4.99),
-        Complemento(nome: "Bacon", preco: 2.99),
-        ],
-      ),
-
-          Comida(
-      nome: "Hamburguer aberto", 
-      descricao: 'Hamburguer aberto com champinon, salada, carne, pão e molho especial', 
-      caminhoImagem: "lib/imagens/comidas/HAMBURGUER_ABERTO.jpeg", 
-      preco: 30.00,
-      gluten: true,
-      leite: true,        
-      categoria: CategoriaComida.hamburguers, 
-      complementosDisponiveis: [
-        Complemento(nome: "Queijo extra", preco: 1.99),
-        Complemento(nome: "Carne extra", preco: 4.99),
-        Complemento(nome: "Bacon", preco: 2.99),
-        ],
-      ),
-
-    Comida(
-      nome: "Hamburguer com Ricota", 
-      descricao: 'Pão, queijo de ricota e carne bovina', 
-      caminhoImagem: "lib/imagens/comidas/HAMBURGUER_RICOTA.jpg", 
-      preco: 26.00,
-      gluten: true,
-      leite: true,        
-      categoria: CategoriaComida.hamburguers, 
-      complementosDisponiveis: [
-        Complemento(nome: "Queijo extra", preco: 1.99),
-        Complemento(nome: "Carne extra", preco: 4.99),
-        Complemento(nome: "Bacon", preco: 2.99),
-        ],
-      ),
-
-    Comida(
-      nome: "Hamburguer Trufado", 
-      descricao: 'Pão, queijo chedar, lascas de trufa e carne bovina', 
-      caminhoImagem: "lib/imagens/comidas/HAMBURGUER_TRUFADO.jpg", 
-      preco: 50.00,
-      gluten: true,
-      leite: true,        
-      categoria: CategoriaComida.hamburguers, 
-      complementosDisponiveis: [
-        Complemento(nome: "Queijo extra", preco: 1.99),
-        Complemento(nome: "Carne extra", preco: 4.99),
-        Complemento(nome: "Bacon", preco: 2.99),
-        ],
-      ),
-
-    //salada
-
-
-    //petiscos
-    Comida(
-      nome: "Bolinho de carne", 
-      descricao: 'Bolinho especial de carne recheado com queijo, 6 unidades', 
-      caminhoImagem: "lib/imagens/comidas/BOLINHA2.png", 
-      preco: 38.00,
-      gluten: false,
-      leite: true,        
-      categoria: CategoriaComida.petiscos, 
-      complementosDisponiveis: [
-        Complemento(nome: "Maionese extra", preco: 0.99),
-        Complemento(nome: "Ketchup extra", preco: 0.99),
-        ],
-      ),
-    
-    //sobremesa
-    Comida(
-      nome: "Bolo de chocolate sem gluten e leite", 
-      descricao: 'Bolo com massa feita massa de pipoca e cacau em pó', 
-      caminhoImagem: "lib/imagens/comidas/BOLO_DE_CHOCOLATE.png", 
-      preco: 30.00,
-      gluten: false,
-      leite: false,        
-      categoria: CategoriaComida.sobremesas, 
-      complementosDisponiveis: [
-        Complemento(nome: "Pedaço extra", preco: 5.99),
-        ],
-      ),
     
     //bebida
     Comida(
@@ -109,21 +17,20 @@ class Restaurante2 extends ChangeNotifier{
       preco: 8.90, 
       gluten: false,
       leite: false, 
-      categoria: CategoriaComida.bebidas, 
+      categoria2: CategoriaComida2.bebidas, 
       complementosDisponiveis: [
         Complemento(nome: "Copo congelado", preco: 2.99),
         ],
       ),
 
-       //spagheti
-    Comida(
+      Comida(
       nome: "Macarrao", 
       descricao: 'Lata de coca-cola 350ML', 
       caminhoImagem: "lib/imagens/comidas/MACARRAO.png", 
       preco: 8.90, 
       gluten: false,
       leite: false, 
-      categoria: CategoriaComida.spagheti, 
+      categoria2: CategoriaComida2.spagheti, 
       complementosDisponiveis: [
         Complemento(nome: "Copo congelado", preco: 2.99),
         ],

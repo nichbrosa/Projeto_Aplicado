@@ -16,10 +16,10 @@ class Restaurante2Pagina extends StatefulWidget {
   const Restaurante2Pagina({super.key});
 
   @override
-  State<Restaurante2Pagina> createState() => _HomePaginaState();
+  State<Restaurante2Pagina> createState() => _Restaurante2PaginaState();
 }
 
-class _HomePaginaState extends State<Restaurante2Pagina> with SingleTickerProviderStateMixin{
+class _Restaurante2PaginaState extends State<Restaurante2Pagina> with SingleTickerProviderStateMixin{
    
   //tab controller
   late TabController _tabController;
@@ -27,7 +27,7 @@ class _HomePaginaState extends State<Restaurante2Pagina> with SingleTickerProvid
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: CategoriaComida.values.length, vsync: this);
+    _tabController = TabController(length: CategoriaComida2.values.length, vsync: this);
   }
 
 @override
@@ -37,13 +37,13 @@ class _HomePaginaState extends State<Restaurante2Pagina> with SingleTickerProvid
   }
 
   // separar e retornar uma lista dos itens de comida que pertencem a uma categoria especifica
-  List<Comida> _filtrarMenuPorCategoria(CategoriaComida categoria, List<Comida> fullMenu){
-    return fullMenu.where((Comida) => Comida.categoria == categoria).toList();
+  List<Comida> _filtrarMenuPorCategoria(CategoriaComida2 categoria, List<Comida> fullMenu){
+    return fullMenu.where((Comida) => Comida.categoria2 == categoria).toList();
   }
 
   // retornar a lista de comidas na categoria fornecida
   List<Widget> getFoodInThisCategory(List<Comida> fullMenu){
-    return CategoriaComida.values.map((categoria){
+    return CategoriaComida2.values.map((categoria){
 
       // pega a categoria da comida
       List<Comida> categoryMenu = _filtrarMenuPorCategoria(categoria, fullMenu);
@@ -83,19 +83,20 @@ class _HomePaginaState extends State<Restaurante2Pagina> with SingleTickerProvid
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [              
-                Divider(
-                  indent: 25, 
-                  endIndent: 25, 
-                  color: Theme.of(context).colorScheme.secondary,
-                  ),
-
-                //nome do restaurante
-                const Text("Best"),
-                //localização atual
-                MyCurrentLocation(),
-
                 //caixa de descrição
                 const MyDescriptionBox(),
+
+                //nome do restaurante
+                const Text(
+                    "Best",
+                      style: TextStyle(
+                        fontSize: 16, // Tamanho da fonte
+                        fontWeight: FontWeight.bold, // Negrito
+  ),
+),
+
+                //localização atual
+                MyCurrentLocation(),
                ],
               ),
           ),

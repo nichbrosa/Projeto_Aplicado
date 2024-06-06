@@ -234,10 +234,10 @@ class Restaurante extends ChangeNotifier{
         itemTotal += complemento.preco;
       }
 
-      total += itemTotal * itemCarrinho.quantidade + 1.99;
+      total += itemTotal * itemCarrinho.quantidade;
     }
 
-    return total;
+    return total += 1.99;
   }
 
   // numero total de itens no carrinho

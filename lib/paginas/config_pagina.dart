@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_aplicado/modelos/restaurante.dart';
+import 'package:projeto_aplicado/modelos/restaurante2.dart';
 import 'package:provider/provider.dart';
 import 'package:projeto_aplicado/temas/theme_provider.dart';
 
@@ -31,15 +32,18 @@ class ConfigPagina extends StatelessWidget {
                 },
               ),
             ),
-            const SizedBox(height: 10),
+ const SizedBox(height: 10),
             _buildConfigOption(
               context,
               "Sem Gluten",
-              Consumer<Restaurante>(
-                builder: (context, restauranteProvider, child) {
+              Consumer2<Restaurante, Restaurante2>(
+                builder: (context, restauranteProvider, restaurante2Provider, child) {
                   return CupertinoSwitch(
                     value: restauranteProvider.glutenIsVisible,
-                    onChanged: (value) => restauranteProvider.toggleGlutenVisibility(),
+                    onChanged: (value) {
+                      restauranteProvider.toggleGlutenVisibility();
+                      restaurante2Provider.toggleGlutenVisibility();
+                    },
                   );
                 },
               ),
@@ -48,11 +52,14 @@ class ConfigPagina extends StatelessWidget {
             _buildConfigOption(
               context,
               "Sem Leite",
-              Consumer<Restaurante>(
-                builder: (context, restauranteProvider, child) {
+              Consumer2<Restaurante, Restaurante2>(
+                builder: (context, restauranteProvider, restaurante2Provider, child) {
                   return CupertinoSwitch(
                     value: restauranteProvider.leiteIsVisible,
-                    onChanged: (value) => restauranteProvider.toggleLeiteVisibility(),
+                    onChanged: (value) {
+                        restauranteProvider.toggleLeiteVisibility();
+                        restaurante2Provider.toggleLeiteVisibility();
+                    },
                   );
                 },
               ),
@@ -63,7 +70,8 @@ class ConfigPagina extends StatelessWidget {
     );
   }
 
-  Widget _buildConfigOption(BuildContext context, String title, Widget switchWidget) {
+  Widget _buildConfigOption(
+      BuildContext context, String title, Widget switchWidget) {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.secondary,

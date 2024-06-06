@@ -7,10 +7,10 @@ class MySliverAppBar extends StatelessWidget {
   final bool isScroller;
 
   const MySliverAppBar({
-    Key? key, 
+    super.key, 
     required this.child,
     required this.title, 
-    required this.isScroller,
+    this.isScroller = false, // Definindo o valor padrão como false
   });
 
   @override
@@ -49,7 +49,7 @@ class MySliverAppBar extends StatelessWidget {
         )
       ],
       bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(0),
+        preferredSize: const Size(0),
         child: Divider(
           indent: 25,
           endIndent: 25,
