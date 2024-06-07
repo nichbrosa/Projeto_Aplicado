@@ -370,7 +370,7 @@ class Restaurante2 extends ChangeNotifier {
       bool eComidaigual = item.comida == comida;
 
       //checar se a lista de complementos selecionados são os mesmos
-      bool eComplementoigual = ListEquality()
+      bool eComplementoigual = const ListEquality()
           .equals(item.complementoSelecionado, complementoSelecionado);
 
       return eComidaigual && eComplementoigual;
@@ -465,7 +465,7 @@ class Restaurante2 extends ChangeNotifier {
 
     recibo.writeln(formatarData);
     recibo.writeln();
-    recibo.writeln("------------");
+    recibo.writeln("------------\n");
 
     for (final itemCarrinho in _carrinho) {
       recibo.writeln(

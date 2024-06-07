@@ -508,7 +508,7 @@ class Restaurante extends ChangeNotifier {
 
     recibo.writeln(formatarData);
     recibo.writeln();
-    recibo.writeln("------------");
+    recibo.writeln("------------\n");
 
     for (final itemCarrinho in _carrinho) {
       recibo.writeln(

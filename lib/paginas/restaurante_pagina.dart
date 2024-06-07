@@ -78,24 +78,25 @@ class _RestaurantePaginaState extends State<RestaurantePagina>
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScroller) => [
           MySliverAppBar(
-            title: MyTabBar(tabController: _tabController),
+            title: MyTabBar(
+              tabController: _tabController,
+              categories: CategoriaComida.values,
+            ),
             isScroller: true,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-               
-
                 //caixa de descrição
                 const MyDescriptionBox(),
 
                 //nome do restaurante
                 const Text(
-                    "DogBurguer",
-                      style: TextStyle(
-                        fontSize: 16, // Tamanho da fonte
-                        fontWeight: FontWeight.bold, // Negrito
-  ),
-),
+                  "DogBurguer",
+                  style: TextStyle(
+                    fontSize: 16, // Tamanho da fonte
+                    fontWeight: FontWeight.bold, // Negrito
+                  ),
+                ),
 
                 //localização atual
                 MyCurrentLocation(),

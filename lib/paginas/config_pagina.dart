@@ -35,7 +35,7 @@ class ConfigPagina extends StatelessWidget {
  const SizedBox(height: 10),
             _buildConfigOption(
               context,
-              "Sem Gluten",
+              "Contem Gluten",
               Consumer2<Restaurante, Restaurante2>(
                 builder: (context, restauranteProvider, restaurante2Provider, child) {
                   return CupertinoSwitch(
@@ -51,7 +51,7 @@ class ConfigPagina extends StatelessWidget {
             const SizedBox(height: 10),
             _buildConfigOption(
               context,
-              "Sem Leite",
+              "Contem Lactose",
               Consumer2<Restaurante, Restaurante2>(
                 builder: (context, restauranteProvider, restaurante2Provider, child) {
                   return CupertinoSwitch(
