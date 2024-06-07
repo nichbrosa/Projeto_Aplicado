@@ -82,16 +82,29 @@ class CarrinhoPagina extends StatelessWidget {
                 ),
             ),
 
+            
               //botao para pagar
-              MyButton(
-                onTap: () => Navigator.push(
-                  context, 
-                  MaterialPageRoute(
-                    builder: (context) => const PagamentoPagina(),
-                  ),
-                ),
-                text: " Ir para pagamento", 
-              ),
+               MyButton(
+              onTap: () {
+                if (usuarioCarrinho.isEmpty) {
+                  // Mostra uma mensagem de aviso se o carrinho estiver vazio
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("O carrinho está vazio. Adicione itens antes de continuar."),
+                    ),
+                  );
+                } else {
+                  // Navega para a página de pagamento se o carrinho não estiver vazio
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PagamentoPagina(),
+                    ),
+                  );
+                }
+              },
+              text: "Ir para pagamento",
+            ),
 
                 const SizedBox(height: 25),
           ],
