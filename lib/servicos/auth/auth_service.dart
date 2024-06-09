@@ -23,8 +23,8 @@ class AuthService {
       return userCredential;
     } 
     //pegar qualquer error
-    on FirebaseAuthException{
-      throw Exception('Verifique as informações preenchidas');
+   on FirebaseAuthException{
+      throw Exception('Verifique se os campos estão preenchidos\nSe a senha e e-mail não estiverem certas verifique');
     }
   }
 
@@ -41,8 +41,8 @@ class AuthService {
       return userCredential;
     } 
     //pegar qualquer error
-    on FirebaseAuthException {
-      throw Exception('Verificar se todas as informações estão corretas');
+    on FirebaseAuthException catch (e){
+      throw Exception(e.code);
     }
   }
 
