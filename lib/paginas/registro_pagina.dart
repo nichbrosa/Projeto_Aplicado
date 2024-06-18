@@ -24,13 +24,13 @@ class _RegistroPaginaState extends State<RegistroPagina> {
   //metodo registrar
   void registrar() async {
     //get auth service
-    final _authService = AuthService();
+    final authService = AuthService();
 
-    //checa se as senhas batem -> criar usuario
-    if (senhaController.text == confirmarsenhaController.text) {
+    //checa se as senhas batem e nada está vazio -> criar usuario
+    if (senhaController.text == confirmarsenhaController.text && emailController.text.isNotEmpty && senhaController.text.isNotEmpty) {
       //tentar criar usuario
       try {
-        await _authService.signUpWithEmailPassword(
+        await authService.signUpWithEmailPassword(
             emailController.text, senhaController.text);
       }
 
@@ -38,19 +38,38 @@ class _RegistroPaginaState extends State<RegistroPagina> {
       catch (e) {
         showDialog(
           context: context,
-          builder: (context) => const AlertDialog(
-              title: Text(
-                  'Por favor verificar se os campos foram preenchidos corretamente\nUsuario pode ja existir \nSenha precisa conter 6 digitos')),
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()
+            ),
+          ),
         );
       }
     }
 
     //se as senhas não forem iguais -> mostrar error
-    else {
+    else if(senhaController.text != confirmarsenhaController.text){
       showDialog(
         context: context,
         builder: (context) => const AlertDialog(
           title: Text("Senhas não são iguais!"),
+        ),
+      );
+    }
+    //se o e-mail não for vazio -> mostrar error
+    else if(emailController.text.isEmpty){
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text("E-mail está vazio!"),
+        ),
+      );
+    }
+    //se a senha não for vazia -> mostrar error
+    else if(senhaController.text.isEmpty){
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text("Senha está vazia!"),
         ),
       );
     }
