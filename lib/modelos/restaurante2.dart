@@ -500,4 +500,27 @@ class Restaurante2 extends ChangeNotifier {
             "${complemento.nome} (${_formatarPreco(complemento.preco)})")
         .join(", ");
   }
+
+  String mostrarComidaCarrinho() {
+    final comida = StringBuffer();
+    final preco = StringBuffer();
+    final entrega = StringBuffer();
+
+    for (final itemCarrinho in _carrinho) {
+      comida.writeln(
+          "${itemCarrinho.quantidade} x ${itemCarrinho.comida.nome} - ${_formatarPreco(itemCarrinho.comida.preco)}");
+      if (itemCarrinho.complementoSelecionado.isNotEmpty) {
+        comida.writeln(
+            " Complementos: ${_formatarComplemento(itemCarrinho.complementoSelecionado)}");
+      }
+    }
+
+    comida.writeln("Total de itens: ${getContagemItensTotal()}");
+    preco.writeln("Total do preço: ${_formatarPreco(getPrecoTotal())}");
+    preco.writeln("Taxa de entrega: R\$1,99");
+
+    entrega.writeln("Entregando para: $deliveryAdress");
+
+    return comida.toString();
+  }
 }

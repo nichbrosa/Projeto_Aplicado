@@ -21,8 +21,10 @@ class _ProgressoEntregaPaginaState extends State<ProgressoEntregaPagina> {
     super.initState();
 
     //se chegarmos a essa pagina, enviamos o pedido ao banco de dados firestore
-    String recibo = context.read<Restaurante>().mostrarReciboCarrinho();
-    banco.salvarPedidosNoBanco(recibo);
+    String comida = context.read<Restaurante>().mostrarComidaCarrinho();
+    String preco = context.read<Restaurante>().mostrarComidaCarrinho();
+    String entrega = context.read<Restaurante>().mostrarComidaCarrinho();
+    banco.salvarPedidosNoBanco(comida, preco, entrega);
   }
 
 

@@ -7,10 +7,12 @@ class FirestoreService{
     FirebaseFirestore.instance.collection('Pedidos');
 
   //salvar os pedidos no banco de dados
-  Future<void> salvarPedidosNoBanco(String recibo) async {
+  Future<void> salvarPedidosNoBanco(String comida, String preco, String entrega) async {
     await pedidos.add({
       'data': DateTime.now(),
-      'pedido': recibo,
+      'comida': comida,
+      'preco': preco,
+      'entrega': entrega
       //adicionar mais linhas se necessário
     });
   }
