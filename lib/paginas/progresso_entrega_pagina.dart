@@ -12,21 +12,21 @@ class ProgressoEntregaPagina extends StatefulWidget {
 }
 
 class _ProgressoEntregaPaginaState extends State<ProgressoEntregaPagina> {
-
   //acesso ao banco
   FirestoreService banco = FirestoreService();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
 
     //se chegarmos a essa pagina, enviamos o pedido ao banco de dados firestore
     String comida = context.read<Restaurante>().mostrarComidaCarrinho();
-    String preco = context.read<Restaurante>().mostrarComidaCarrinho();
-    String entrega = context.read<Restaurante>().mostrarComidaCarrinho();
-    banco.salvarPedidosNoBanco(comida, preco, entrega);
+    String quantidade = context.read<Restaurante>().mostrarQuantidadeCarrinho();
+    String entrega = context.read<Restaurante>().mostrarEntregaCarrinho();
+    String taxa = context.read<Restaurante>().mostrarTaxaCarrinho();
+    String total = context.read<Restaurante>().mostrarTotalCarrinho();
+    banco.salvarPedidosNoBanco(comida, quantidade, entrega, taxa, total);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +37,15 @@ class _ProgressoEntregaPaginaState extends State<ProgressoEntregaPagina> {
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
       body: const SingleChildScrollView(
-        child:  Column(
-          children: [
-            MyReceipt()
-          ],
+        child: Column(
+          children: [MyReceipt()],
         ),
       ),
     );
   }
 
   //Botao customizado - Mensagem / chamar o entregador
-  Widget _buildBottomNavBar(BuildContext context){
+  Widget _buildBottomNavBar(BuildContext context) {
     return Container(
       height: 100,
       decoration: BoxDecoration(
@@ -55,81 +53,81 @@ class _ProgressoEntregaPaginaState extends State<ProgressoEntregaPagina> {
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(40),
           topRight: Radius.circular(40),
-          ),
         ),
-        padding: const EdgeInsets.all(25),
-        child: Row(
-          children: [
-            //foto do entregador
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
-                shape:  BoxShape.circle,
-              ),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.person_outlined),
-              ),
+      ),
+      padding: const EdgeInsets.all(25),
+      child: Row(
+        children: [
+          //foto do entregador
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+              shape: BoxShape.circle,
             ),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.person_outlined),
+            ),
+          ),
 
-            const SizedBox(width: 10),
+          const SizedBox(width: 10),
 
-            //detalhes do entregador
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Jorge Butcher",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  ),
+          //detalhes do entregador
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Jorge Butcher",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Theme.of(context).colorScheme.inversePrimary,
                 ),
+              ),
               Text(
                 "Entregador",
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
-                  ),
                 ),
-              ],
-            ),
-
-            const Spacer(),
-
-            //botao mensagem
-            Row(
-              children: [
-                Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
-                shape:  BoxShape.circle,
               ),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.message_outlined),
-                color:  Theme.of(context).colorScheme.primary,
-              ),
-            ),
-              ],
-            ),
+            ],
+          ),
 
-            const SizedBox(width: 10),
+          const Spacer(),
 
-            //botao ligar
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
-                shape:  BoxShape.circle,
+          //botao mensagem
+          Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.background,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.message_outlined),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.call_outlined),
-                color: Colors.green,
-              ),
+            ],
+          ),
+
+          const SizedBox(width: 10),
+
+          //botao ligar
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+              shape: BoxShape.circle,
             ),
-          ],
-        ),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.call_outlined),
+              color: Colors.green,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

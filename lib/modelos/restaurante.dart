@@ -510,7 +510,6 @@ class Restaurante extends ChangeNotifier {
     recibo.writeln();
     recibo.writeln("------------\n");
 
-    
     for (final itemCarrinho in _carrinho) {
       recibo.writeln(
           "${itemCarrinho.quantidade} x ${itemCarrinho.comida.nome} - ${_formatarPreco(itemCarrinho.comida.preco)}");
@@ -545,26 +544,50 @@ class Restaurante extends ChangeNotifier {
         .join(", ");
   }
 
-   String mostrarComidaCarrinho() {
+  String mostrarComidaCarrinho() {
     final comida = StringBuffer();
-    final preco = StringBuffer();
-    final entrega = StringBuffer();
-  
+
     for (final itemCarrinho in _carrinho) {
       comida.writeln(
           "${itemCarrinho.quantidade} x ${itemCarrinho.comida.nome} - ${_formatarPreco(itemCarrinho.comida.preco)}");
       if (itemCarrinho.complementoSelecionado.isNotEmpty) {
         comida.writeln(
-            " Complementos: ${_formatarComplemento(itemCarrinho.complementoSelecionado)}");
+            "\n Complementos: ${_formatarComplemento(itemCarrinho.complementoSelecionado)}");
       }
     }
 
-    comida.writeln("Total de itens: ${getContagemItensTotal()}");
-    preco.writeln("Total do preço: ${_formatarPreco(getPrecoTotal())}");
-    preco.writeln("Taxa de entrega: R\$1,99");
- 
-    entrega.writeln("Entregando para: $deliveryAdress");
-
     return comida.toString();
+  }
+
+  String mostrarTotalCarrinho() {
+    final total = StringBuffer();
+
+    total.writeln("Total do preço: ${_formatarPreco(getPrecoTotal())}");
+
+    return total.toString();
+  }
+
+    String mostrarTaxaCarrinho() {
+    final taxa = StringBuffer();
+
+    taxa.writeln("Taxa de entrega: R\$1,99");
+    
+    return taxa.toString();
+  }
+
+    String mostrarQuantidadeCarrinho() {
+    final quantidade = StringBuffer();
+
+    quantidade.writeln("Total de itens: ${getContagemItensTotal()}");
+
+    return quantidade.toString();
+  }
+
+    String mostrarEntregaCarrinho() {
+    final entrega = StringBuffer();
+
+     entrega.writeln("Entregando para: $deliveryAdress");
+    
+    return entrega.toString();
   }
 }
