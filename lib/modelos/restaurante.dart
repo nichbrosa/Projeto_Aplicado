@@ -523,8 +523,8 @@ class Restaurante extends ChangeNotifier {
     recibo.writeln("--------------");
     recibo.writeln();
     recibo.writeln("Total de itens: ${getContagemItensTotal()}");
-    recibo.writeln("Total do preço: ${_formatarPreco(getPrecoTotal())}");
     recibo.writeln("Taxa de entrega: R\$1,99");
+    recibo.writeln("Total do pedido: ${_formatarPreco(getPrecoTotal())}");
     recibo.writeln();
     recibo.writeln("Entregando para: $deliveryAdress");
 
@@ -562,7 +562,7 @@ class Restaurante extends ChangeNotifier {
   String mostrarTotalCarrinho() {
     final total = StringBuffer();
 
-    total.writeln("Total do preço: ${_formatarPreco(getPrecoTotal())}");
+    total.writeln("Total do pedido: ${_formatarPreco(getPrecoTotal())}");
 
     return total.toString();
   }

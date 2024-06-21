@@ -480,8 +480,8 @@ class Restaurante2 extends ChangeNotifier {
     recibo.writeln("--------------");
     recibo.writeln();
     recibo.writeln("Total de itens: ${getContagemItensTotal()}");
-    recibo.writeln("Total do preço: ${_formatarPreco(getPrecoTotal())}");
     recibo.writeln("Taxa de entrega: R\$1,99");
+    recibo.writeln("Total do pedido: ${_formatarPreco(getPrecoTotal())}");
     recibo.writeln();
     recibo.writeln("Entregando para: $deliveryAdress");
 
@@ -501,7 +501,7 @@ class Restaurante2 extends ChangeNotifier {
         .join(", ");
   }
 
- String mostrarComidaCarrinho() {
+  String mostrarComidaCarrinho() {
     final comida = StringBuffer();
 
     for (final itemCarrinho in _carrinho) {
@@ -519,20 +519,20 @@ class Restaurante2 extends ChangeNotifier {
   String mostrarTotalCarrinho() {
     final total = StringBuffer();
 
-    total.writeln("Total do preço: ${_formatarPreco(getPrecoTotal())}");
+    total.writeln("Total do pedido: ${_formatarPreco(getPrecoTotal())}");
 
     return total.toString();
   }
 
-    String mostrarTaxaCarrinho() {
+  String mostrarTaxaCarrinho() {
     final taxa = StringBuffer();
 
     taxa.writeln("Taxa de entrega: R\$1,99");
-    
+
     return taxa.toString();
   }
 
-    String mostrarQuantidadeCarrinho() {
+  String mostrarQuantidadeCarrinho() {
     final quantidade = StringBuffer();
 
     quantidade.writeln("Total de itens: ${getContagemItensTotal()}");
@@ -540,11 +540,11 @@ class Restaurante2 extends ChangeNotifier {
     return quantidade.toString();
   }
 
-    String mostrarEntregaCarrinho() {
+  String mostrarEntregaCarrinho() {
     final entrega = StringBuffer();
 
-     entrega.writeln("Entregando para: $deliveryAdress");
-    
+    entrega.writeln("Entregando para: $deliveryAdress");
+
     return entrega.toString();
   }
 }
