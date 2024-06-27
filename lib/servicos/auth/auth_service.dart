@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:math';
 
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
   // pegar as instancias da autenticacao do firebase
@@ -24,10 +25,12 @@ class AuthService {
     }
     //pegar qualquer error
     on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        throw Exception('E-mail não encontrado. Cadastre-se');
+      if (e.code == 'invalid-credential') {
+        throw Exception('Por favor verificar informações');
       } else if (e.code == 'wrong-password') {
         throw Exception('Senha incorreta. Tente novamente');
+      } else if (e.code == 'invalid-email') {
+        throw Exception('E-mail inválido');
       } else {
         throw Exception('Erro de login');
       }
@@ -48,10 +51,12 @@ class AuthService {
     }
     //pegar qualquer error
     on FirebaseAuthException catch (e) {
-      if (e.code == 'e-mail-already-in-use') {
+      if (e.code == 'email-already-in-use') {
         throw Exception('Este e-mail já está cadastrado');
       } else if (e.code == 'weak-password') {
         throw Exception('Senha é muito fraca');
+      } else if (e.code == 'invalid-email') {
+        throw Exception('E-mail inválido');
       } else {
         throw Exception('Erro ao cadastrar');
       }
